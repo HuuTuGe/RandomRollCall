@@ -9,7 +9,7 @@
 
 ### 1、数据生成
 
-- 运行数据集生成器（data generator.cpp),通过outfile一次生成随机的5组数据自动存放在txt文件output1.txt，output2、txt，output3.txt，output4、txt、output5、txt。  
+- 运行数据集生成器（data generator.cpp),通过outfile一次生成随机的5组数据自动存放在txt文件output1.txt，output2.txt，output3.txt，output4.txt、output5.txt。  
  
 ### 2、导入txt并生成E值
 
