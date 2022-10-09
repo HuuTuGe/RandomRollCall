@@ -8,6 +8,7 @@
 using namespace std;
 struct student{
 	public:
+	int number; 
 	double grade=0;    //绩点 
 	double pastp=0;    //缺勤率 
 	int here[20]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};//到没到
@@ -25,6 +26,13 @@ void create_txt2();
 void create_txt3();
 void create_txt4();
 void create_txt5();
+void getnumber()    //学号生成 
+{
+	for(int i=0;i<=89;i++)
+	{
+		stu[i].number=i;
+	}
+}
 
 
 int main()
@@ -36,6 +44,7 @@ int main()
 		int count = 0, count2 = 0;
 		int flag[90] = { 0 }, flag2[20] = { 0 };
 		srand((int)time(0));
+		getnumber();
 		for (int i = 0; i <= 89; i++)
 		{
 			stu[i].grade = rand() % 3 + 1;
@@ -152,7 +161,7 @@ int main()
 		else if (k == 3) create_txt3();
 		else if (k == 4) create_txt4();
 		else create_txt5();
-		Sleep(100);     //使得每次生成都不一样 
+		Sleep(1000);     //使得每次生成都不一样 
 	}
 }
 
@@ -166,7 +175,7 @@ void create_txt1() {
 	}
 	for (int i = 0; i <= 89; i++)
 	{
-		outfile << stu[i].grade << " " << stu[i].pastp << " ";
+	    	outfile << stu[i].number<<" "<< stu[i].grade << " " << stu[i].pastp << " ";
 		for (int j = 0; j <= 19; j++)
 		{
 			outfile << stu[i].here[j] << " ";
@@ -185,7 +194,7 @@ void create_txt2() {
 	}
 	for (int i = 0; i <= 89; i++)
 	{
-		outfile << stu[i].grade << " " << stu[i].pastp << " ";
+	   	outfile << stu[i].number<<" "<< stu[i].grade << " " << stu[i].pastp << " ";
 		for (int j = 0; j <= 19; j++)
 		{
 			outfile << stu[i].here[j] << " ";
@@ -204,7 +213,7 @@ void create_txt3() {
 	}
 	for (int i = 0; i <= 89; i++)
 	{
-		outfile << stu[i].grade << " " << stu[i].pastp << " ";
+		outfile << stu[i].number<<" "<< stu[i].grade << " " << stu[i].pastp << " ";
 		for (int j = 0; j <= 19; j++)
 		{
 			outfile << stu[i].here[j] << " ";
@@ -224,7 +233,7 @@ void create_txt4() {
 	
 	for (int i = 0; i <= 89; i++)
 	{
-		outfile << stu[i].grade << " " << stu[i].pastp << " ";
+	     	outfile << stu[i].number<<" "<< stu[i].grade << " " << stu[i].pastp << " ";
 		for (int j = 0; j <= 19; j++)
 		{
 			outfile << stu[i].here[j] << " ";
@@ -244,7 +253,7 @@ void create_txt5() {
 	}
 	for (int i = 0; i <= 89; i++)
 	{
-		outfile << stu[i].grade << " " << stu[i].pastp << " ";
+		outfile << stu[i].number<<" "<< stu[i].grade << " " << stu[i].pastp << " ";
 		for (int j = 0; j <= 19; j++)
 		{
 			outfile << stu[i].here[j] << " ";
