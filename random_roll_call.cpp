@@ -6,11 +6,11 @@
 using namespace std;
 
 struct student {
-	int number=0;//ºÅÂë 
-	double grade = 0;//¼¨µã
-	double pastp = 0;//È±ÇÚÏµÊı
-	double nownumber = 0;//ÏÖÔÚÈ±ÇÚ´ÎÊı
-	int here[20] = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };  //µ½Ã»µ½
+	int number=0;//å·ç  
+	double grade = 0;//ç»©ç‚¹
+	double pastp = 0;//ç¼ºå‹¤ç³»æ•°
+	double nownumber = 0;//ç°åœ¨ç¼ºå‹¤æ¬¡æ•°
+	int here[20] = { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };  //åˆ°æ²¡åˆ°
 }stu[90];
 bool cmp(student x, student y)
 {
@@ -19,7 +19,7 @@ bool cmp(student x, student y)
 }
 
 double E = 0, numerator = 0, denominator = 0;
-string s1 = "Èí¼ş¹¤³Ì", s2 = "Êı¾İ¿âÏµÍ³Ô­Àí", s3 = "¼ÆËã»ú²Ù×÷ÏµÍ³", s4 = "¼ÆËã»úÍ¼ĞÎÑ§", s5 = "´óÑ§Ó¦ÓÃĞ´×÷";
+string s1 = "è½¯ä»¶å·¥ç¨‹", s2 = "æ•°æ®åº“ç³»ç»ŸåŸç†", s3 = "è®¡ç®—æœºæ“ä½œç³»ç»Ÿ", s4 = "è®¡ç®—æœºå›¾å½¢å­¦", s5 = "å¤§å­¦åº”ç”¨å†™ä½œ";
 void read_save1();
 void read_save2();
 void read_save3();
@@ -28,6 +28,7 @@ void read_save5();
 void final_result();
 void address_E(string s);
 int pastp_add(int x, int y);
+
 
 int main()
 {
@@ -44,69 +45,100 @@ int main()
 	final_result();
 }
 
+
 int pastp_add(int x, int y)
-{
-	if (stu[x].here[y] == 0)//Ã»µ½ 
+=======
+int  pastp_add(int x, int y)
+>>
+>>>>> main{
+	if (stu[x].here[y] == 0)//æ²¡åˆ° 
 	{
-		stu[x].nownumber++;//ÏÖÔÚÈ±ÇÚ´ÎÊıÔö¼Ó1
+		stu[x].nownumber++;//ç°åœ¨ç¼ºå‹¤æ¬¡æ•°å¢åŠ 1
 		if (stu[x].nownumber == 1)
 		{
-			stu[x].pastp += 0.05; //È±µÚÒ»´Î + 0.05 ,µÚ¶ş´Î + 0.5 ,µÚÈı´Î + 0.5£¬ÓÃÒÔ±£Ö¤Å¼¶ûÒ»´ÎÈ±¿Î²»»á±»Ò»Ö±µãÃû£¬Èı´Î³éÈ¡¸ÅÂÊÔö¼Ó
+			stu[x].pastp += 0.05; //ç¼ºç¬¬ä¸€æ¬¡ + 0.05 ,ç¬¬äºŒæ¬¡ + 0.5 ,ç¬¬ä¸‰æ¬¡ + 0.5ï¼Œç”¨ä»¥ä¿è¯å¶å°”ä¸€æ¬¡ç¼ºè¯¾ä¸ä¼šè¢«ä¸€ç›´ç‚¹åï¼Œä¸‰æ¬¡æŠ½å–æ¦‚ç‡å¢åŠ 
 		}
 		else if (stu[x].nownumber > 1)
 		{
 			stu[x].pastp += 0.5;
 		}
 		numerator++;
-			cout<<"È±ÇÚ"<<" "; 
+			cout<<"ç¼ºå‹¤"<<" "; 
 	     return 1;
 	}
 	else
 	return 0;
+
 }
 
 void address_E(string s)
 {
 	int m,m1,m2;
-	cout << s << "µÄ³éµã·½°¸ÈçÏÂ:" << endl; 
-	//´¦Àí·Ö×Ó
-	for (int i = 0; i < 20; i++)//¶ÔÓÚÃ¿Ò»ÃÅ¿ÎµÄ20´Î¿Î
+
+	cout << s << "çš„æŠ½ç‚¹æ–¹æ¡ˆå¦‚ä¸‹:" << endl; 
+
+	cout << s << "çš„æŠ½ç‚¹æ–¹æ¡ˆå¦‚ä¸‹:" << endl;
+	sort(stu, stu + 90, cmp);
+
+	//å¤„ç†åˆ†å­
+	for (int i = 0; i < 20; i++)//å¯¹äºæ¯ä¸€é—¨è¯¾çš„20æ¬¡è¯¾
 	{
 		sort(stu, stu + 90, cmp);
-		cout <<"µÚ"<< i+1 << "´Î¿Î³éµãµÄÍ¬Ñ§ºÅÂëÎª£º" ;
-		for (int j = 0; j < 6; j++)//6¸ö
+		cout <<"ç¬¬"<< i+1 << "æ¬¡è¯¾æŠ½ç‚¹çš„åŒå­¦å·ç ä¸ºï¼š" ;
+		for (int j = 0; j < 6; j++)//6ä¸ª
 		{
 			cout << stu[j].number<<" " ;
-			if (stu[j].here[i] == 0)//Ã»µ½
+			if (stu[j].here[i] == 0)//æ²¡åˆ°
 			{
 				numerator++;
-				cout<<"È±ÇÚ"<<" "; 
+				cout<<"ç¼ºå‹¤"<<" "; 
 				stu[j].pastp += 0.5;
 			}
 			else
-			cout<<"³öÇÚ"<<" "; 
+			cout<<"å‡ºå‹¤"<<" "; 
 		}
-		int temp = rand() % 4;//0-3¸öÈË
-	    if (temp == 3)//µãÁË3¸öÈË
+		int temp = rand() % 4;//0-3ä¸ªäºº
+	    if (temp == 3)//ç‚¹äº†3ä¸ªäºº
 		{
-			int num = (rand() % (7 - 5) + 6);//ÔÚ³ıÁËÇ°¼¸¸öÈËÀïµÄÅÅÃûÇ°¶ş³éÒ»¸ö
+			int num = (rand() % (7 - 5) + 6);//åœ¨é™¤äº†å‰å‡ ä¸ªäººé‡Œçš„æ’åå‰äºŒæŠ½ä¸€ä¸ª
 			cout << stu[num].number << " ";
 			m=pastp_add(num, i);
 			if(m==0)
-			cout<<"³öÇÚ"<<" "; 
+			cout<<"å‡ºå‹¤"<<" "; 
 			denominator += 1;
 		}
+
+		else if (temp == 3)//ç‚¹äº†3ä¸ªäºº
+		{
+			int num1 = (rand() % (9 - 5) + 6);//åœ¨é™¤äº†å‰å‡ ä¸ªäººé‡Œçš„æ’åå‰4æŠ½ä¸¤ä¸ª
+			int num2 = (rand() % (9 - 5) + 6);
+			while (num2 == num1)
+			{
+				num2 = (rand() % (9 - 5) + 6);
+				if (num2 != num1) break;
+			}
+			cout << stu[num1].number<<" " ;
+				m1=pastp_add(num1, i);
+				if(m1==0)
+			cout<<"å‡ºå‹¤"<<" "; 
+			cout << stu[num2].number<<" " ;
+			m2=pastp_add(num2, i);
+				if(m2==0)
+			cout<<"å‡ºå‹¤"<<" "; 
+			denominator += 2;
+		}
+
 		cout << endl;
 	}
-	//´¦Àí·ÖÄ¸
-	denominator += 120;//Ç°5-8¸öÈ¡ÁË6¸ö
+	//å¤„ç†åˆ†æ¯
+	denominator += 120;//å‰5-8ä¸ªå–äº†6ä¸ª
     cout << endl; 
 }
 
-void read_save1() //ÊäÈëµÚÒ»ÃÅ¿ÎµÄËùÓĞÊı¾İ
+void read_save1() //è¾“å…¥ç¬¬ä¸€é—¨è¯¾çš„æ‰€æœ‰æ•°æ®
 {
 	ifstream infile;
-	infile.open("output1.txt");      //×¢ÒâÎÄ¼şµÄÂ·¾¶  
+	infile.open("output1.txt");      //æ³¨æ„æ–‡ä»¶çš„è·¯å¾„  
 	for (int i = 0; i < 90; i++)
 	{
 		infile >> stu[i].number;
@@ -120,10 +152,10 @@ void read_save1() //ÊäÈëµÚÒ»ÃÅ¿ÎµÄËùÓĞÊı¾İ
 	infile.close();
 }
 
-void read_save2() //ÊäÈëµÚ¶şÃÅ¿ÎµÄËùÓĞÊı¾İ
+void read_save2() //è¾“å…¥ç¬¬äºŒé—¨è¯¾çš„æ‰€æœ‰æ•°æ®
 {
 	ifstream infile;
-	infile.open("output2.txt");      //×¢ÒâÎÄ¼şµÄÂ·¾¶  
+	infile.open("output2.txt");      //æ³¨æ„æ–‡ä»¶çš„è·¯å¾„  
 	for (int i = 0; i < 90; i++)
 	{
 		infile >> stu[i].number;
@@ -137,10 +169,10 @@ void read_save2() //ÊäÈëµÚ¶şÃÅ¿ÎµÄËùÓĞÊı¾İ
 	infile.close();
 }
 
-void read_save3()//ÊäÈëµÚÈıÃÅ¿ÎµÄËùÓĞÊı¾İ
+void read_save3()//è¾“å…¥ç¬¬ä¸‰é—¨è¯¾çš„æ‰€æœ‰æ•°æ®
 {
 	ifstream infile;
-	infile.open("output3.txt");      //×¢ÒâÎÄ¼şµÄÂ·¾¶  
+	infile.open("output3.txt");      //æ³¨æ„æ–‡ä»¶çš„è·¯å¾„  
 	for (int i = 0; i < 90; i++)
 	{
 		infile >> stu[i].number;
@@ -153,10 +185,10 @@ void read_save3()//ÊäÈëµÚÈıÃÅ¿ÎµÄËùÓĞÊı¾İ
 	}
 	infile.close();
 }
-void read_save4()//ÊäÈëµÚËÄÃÅ¿ÎµÄËùÓĞÊı¾İ
+void read_save4()//è¾“å…¥ç¬¬å››é—¨è¯¾çš„æ‰€æœ‰æ•°æ®
 {
 	ifstream infile;
-	infile.open("output4.txt");      //×¢ÒâÎÄ¼şµÄÂ·¾¶  
+	infile.open("output4.txt");      //æ³¨æ„æ–‡ä»¶çš„è·¯å¾„  
 	for (int i = 0; i < 90; i++)
 	{
 		infile >> stu[i].number;
@@ -170,10 +202,10 @@ void read_save4()//ÊäÈëµÚËÄÃÅ¿ÎµÄËùÓĞÊı¾İ
 	infile.close();
 }
 
-void read_save5()//ÊäÈëµÚÎåÃÅ¿ÎµÄËùÓĞÊı¾İ
+void read_save5()//è¾“å…¥ç¬¬äº”é—¨è¯¾çš„æ‰€æœ‰æ•°æ®
 {
 	ifstream infile;
-	infile.open("output5.txt");      //×¢ÒâÎÄ¼şµÄÂ·¾¶  
+	infile.open("output5.txt");      //æ³¨æ„æ–‡ä»¶çš„è·¯å¾„  
 	for (int i = 0; i < 90; i++)
 	{
 		infile >> stu[i].number;
