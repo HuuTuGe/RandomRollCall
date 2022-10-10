@@ -27,7 +27,7 @@ void read_save4();
 void read_save5();
 void final_result();
 void address_E(string s);
-void pastp_add(int x, int y);
+int pastp_add(int x, int y);
 
 
 int main()
@@ -45,7 +45,7 @@ int main()
 	final_result();
 }
 
-void pastp_add(int x, int y)
+int  pastp_add(int x, int y)
 {
 	if (stu[x].here[y] == 0)//没到 
 	{
@@ -59,10 +59,16 @@ void pastp_add(int x, int y)
 			stu[x].pastp += 0.5;
 		}
 		numerator++;
+			cout<<"缺勤"<<" "; 
+	     return 1;
 	}
+	else
+	return 0;
+
 }
 void address_E(string s)
 {
+	int m,m1,m2;
 	cout << s << "的抽点方案如下:" << endl;
 	sort(stu, stu + 90, cmp);
 	//处理分子
@@ -71,19 +77,24 @@ void address_E(string s)
 		cout <<"第"<< i+1 << "次课抽点的同学号码为：" ;
 		for (int j = 0; j < 5; j++)//7个
 		{
-			cout << stu[j].number << " ";
+			cout << stu[j].number<<" " ;
 			if (stu[j].here[i] == 0)//没到
 			{
 				numerator++;
+				cout<<"缺勤"<<" "; 
 				stu[j].pastp += 0.5;
 			}
+			else
+			cout<<"出勤"<<" "; 
 		}
 		int temp = rand() % 4;//0-3个人
 		if (temp == 2)//点了2个人
 		{
 			int num = (rand() % (7 - 5) + 6);//在除了前几个人里的排名前二抽一个
 			cout << stu[num].number << " ";
-			pastp_add(num, i);
+			m=pastp_add(num, i);
+			if(m==0)
+			cout<<"出勤"<<" "; 
 			denominator += 1;
 		}
 		else if (temp == 3)//点了3个人
@@ -95,10 +106,14 @@ void address_E(string s)
 				num2 = (rand() % (9 - 5) + 6);
 				if (num2 != num1) break;
 			}
-			cout << stu[num1].number << " ";
-			cout << stu[num2].number << " ";
-			pastp_add(num1, i);
-			pastp_add(num2, i);
+			cout << stu[num1].number<<" " ;
+				m1=pastp_add(num1, i);
+				if(m1==0)
+			cout<<"出勤"<<" "; 
+			cout << stu[num2].number<<" " ;
+			m2=pastp_add(num2, i);
+				if(m2==0)
+			cout<<"出勤"<<" "; 
 			denominator += 2;
 		}
 		cout << endl;
