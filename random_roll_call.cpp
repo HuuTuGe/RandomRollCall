@@ -27,8 +27,7 @@ void read_save4();
 void read_save5();
 void final_result();
 void address_E(string s);
-void pastp_add(int x, int y);
-
+int pastp_add(int x, int y);
 
 int main()
 {
@@ -45,7 +44,7 @@ int main()
 	final_result();
 }
 
-void pastp_add(int x, int y)
+int pastp_add(int x, int y)
 {
 	if (stu[x].here[y] == 0)//没到 
 	{
@@ -59,53 +58,49 @@ void pastp_add(int x, int y)
 			stu[x].pastp += 0.5;
 		}
 		numerator++;
+			cout<<"缺勤"<<" "; 
+	     return 1;
 	}
+	else
+	return 0;
 }
+
 void address_E(string s)
 {
-	cout << s << "的抽点方案如下:" << endl;
-	sort(stu, stu + 90, cmp);
+	int m,m1,m2;
+	cout << s << "的抽点方案如下:" << endl; 
 	//处理分子
 	for (int i = 0; i < 20; i++)//对于每一门课的20次课
 	{
+		sort(stu, stu + 90, cmp);
 		cout <<"第"<< i+1 << "次课抽点的同学号码为：" ;
-		for (int j = 0; j < 5; j++)//7个
+		for (int j = 0; j < 6; j++)//6个
 		{
-			cout << stu[j].number << " ";
+			cout << stu[j].number<<" " ;
 			if (stu[j].here[i] == 0)//没到
 			{
 				numerator++;
+				cout<<"缺勤"<<" "; 
 				stu[j].pastp += 0.5;
 			}
+			else
+			cout<<"出勤"<<" "; 
 		}
 		int temp = rand() % 4;//0-3个人
-		if (temp == 2)//点了2个人
+	    if (temp == 3)//点了3个人
 		{
 			int num = (rand() % (7 - 5) + 6);//在除了前几个人里的排名前二抽一个
 			cout << stu[num].number << " ";
-			pastp_add(num, i);
+			m=pastp_add(num, i);
+			if(m==0)
+			cout<<"出勤"<<" "; 
 			denominator += 1;
-		}
-		else if (temp == 3)//点了3个人
-		{
-			int num1 = (rand() % (9 - 5) + 6);//在除了前几个人里的排名前4抽两个
-			int num2 = (rand() % (9 - 5) + 6);
-			while (num2 == num1)
-			{
-				num2 = (rand() % (9 - 5) + 6);
-				if (num2 != num1) break;
-			}
-			cout << stu[num1].number << " ";
-			cout << stu[num2].number << " ";
-			pastp_add(num1, i);
-			pastp_add(num2, i);
-			denominator += 2;
 		}
 		cout << endl;
 	}
 	//处理分母
-	denominator += 100;//前5-8个取了5个
-	cout << endl;
+	denominator += 120;//前5-8个取了6个
+    cout << endl; 
 }
 
 void read_save1() //输入第一门课的所有数据
@@ -195,5 +190,5 @@ void read_save5()//输入第五门课的所有数据
 void final_result()
 {
 	E = numerator / denominator;
-	cout << "E的值是：" << E << endl;
+	cout << E << endl;
 }
